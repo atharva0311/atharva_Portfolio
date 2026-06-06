@@ -8,7 +8,7 @@ export default function Footer() {
           ATHARVA<span className="text-neon">.</span>
         </div>
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/40">
-          © 2026 {personal.name} · Built with Next.js 15, TypeScript, Tailwind CSS v4 & Framer Motion
+          {personal.name}
         </p>
         <a href="#home" className="font-mono text-xs uppercase tracking-[0.18em] text-neon">Back to top</a>
       </div>
