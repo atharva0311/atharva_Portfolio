@@ -1,0 +1,355 @@
+/* ── VideoIntro.module.css ── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #0a0805;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* ── Background ambient video ── */
+.bgVideo {
+  position: absolute;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  object-fit: cover;
+  filter: blur(38px) saturate(1.4) brightness(0.35);
+  transform: scale(1.05);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Gradient overlays ── */
+.gradientBottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    rgba(6, 4, 2, 0.97) 0%,
+    rgba(6, 4, 2, 0.7) 40%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gradientTop {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to bottom,
+    rgba(6, 4, 2, 0.75) 0%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gradientLeft {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(6, 4, 2, 0.88) 0%,
+    rgba(6, 4, 2, 0.5) 30%,
+    transparent 65%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(4, 3, 2, 0.65) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Foreground video ── */
+.videoWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.fgVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.videoFade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(6,4,2,0.9), transparent);
+  pointer-events: none;
+}
+
+/* ── Content overlay ── */
+.content {
+  position: relative;
+  z-index: 10;
+  padding: 0 6vw;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', 'SF Mono', monospace;
+  font-size: clamp(0.65rem, 1.1vw, 0.78rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 165, 70, 0.75);
+  font-weight: 400;
+  margin: 0;
+}
+
+.taglineDot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #ff7a20;
+  box-shadow: 0 0 8px 2px rgba(255,100,20,0.8);
+  animation: dotPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.6); }
+}
+
+.title {
+  margin: 0;
+  line-height: 0.88;
+  display: flex;
+  flex-direction: column;
+}
+
+.firstName {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  font-weight: 700;
+  font-style: italic;
+  color: #f5ede0;
+  letter-spacing: -0.02em;
+  text-shadow:
+    0 0 60px rgba(255, 120, 30, 0.18),
+    0 2px 40px rgba(0,0,0,0.5);
+}
+
+.lastName {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  font-weight: 700;
+  font-style: italic;
+  color: #ff7520;
+  line-height: 0.75;
+  text-shadow:
+    0 0 80px rgba(255, 100, 10, 0.5),
+    0 0 120px rgba(255, 80, 0, 0.2);
+}
+
+.subtitle {
+  font-family: 'Georgia', serif;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  color: rgba(240, 220, 195, 0.6);
+  line-height: 1.75;
+  font-weight: 400;
+  margin: 0;
+  max-width: 420px;
+  font-style: italic;
+}
+
+/* ── Glass controls ── */
+.controls {
+  position: absolute;
+  bottom: clamp(80px, 10vh, 120px);
+  right: clamp(24px, 4vw, 56px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.glassBtn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 160, 60, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  color: rgba(255, 220, 170, 0.85);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+.glassBtn:hover {
+  background: rgba(255, 120, 30, 0.18);
+  border-color: rgba(255, 140, 50, 0.55);
+  transform: scale(1.07);
+  box-shadow: 0 6px 28px rgba(255, 90, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.glassBtn:active {
+  transform: scale(0.95);
+}
+
+/* ── Sound badge ── */
+.soundBadge {
+  position: absolute;
+  bottom: clamp(80px, 10vh, 120px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,160,60,0.2);
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 200, 130, 0.7);
+  animation: badgeFade 4.5s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes badgeFade {
+  0% { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.soundPulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #ff8030;
+  box-shadow: 0 0 8px 2px rgba(255, 100, 20, 0.7);
+  animation: soundPing 1.4s ease-in-out infinite;
+}
+
+@keyframes soundPing {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+/* ── Scroll indicator ── */
+.scrollIndicator {
+  position: absolute;
+  bottom: clamp(18px, 3.5vh, 38px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 8px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.scrollIndicator:hover {
+  opacity: 1;
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(to bottom, rgba(255,150,50,0), rgba(255,140,40,0.9));
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollLine::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #ff8020, transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .content {
+    padding: 0 5vw;
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .gradientLeft {
+    background: linear-gradient(
+      to top,
+      rgba(6, 4, 2, 0.92) 0%,
+      rgba(6, 4, 2, 0.4) 50%,
+      transparent 100%
+    );
+  }
+
+  .hero {
+    align-items: flex-end;
+    padding-bottom: clamp(100px, 18vh, 160px);
+  }
+
+  .controls {
+    bottom: clamp(60px, 8vh, 90px);
+    right: 18px;
+  }
+
+  .subtitle {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taglineDot,
+  .soundPulse,
+  .scrollLine::after {
+    animation: none;
+  }
+}
