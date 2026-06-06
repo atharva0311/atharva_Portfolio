@@ -9,8 +9,8 @@ export const personal = {
   email: "atharvashinde0311@gmail.com",
   phone: "+91 9067357119",
   location: "Maharashtra, India",
-  linkedin: "https://linkedin.com",
-  github: "https://github.com",
+  linkedin: "https://linkedin.com/in/atharvashinde0311/",
+  github: "https://github.com/atharva0311",
 };
 
 export const navLinks = [
@@ -213,7 +213,7 @@ export const publication = {
   title: "AI-Powered Smart Automated Traffic System with Accident Detection & Violation Detection with E-Challan",
   journal: "International Journal of Scientific Research and Engineering Development (IJSRED)",
   year: "2025",
-  link: "#",
+  link: "https://ijsred.com/volume9/issue2/paper-details/IJSRED-V9I2P202.html",
 };
 
 export const patent = {
